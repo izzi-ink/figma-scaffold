@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Figma Plugin</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 16px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+      .button-group {
+        display: flex;
+        align-items: center;
+      }
+      h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0 0 16px;
+      }
+      button {
+        background-color: #007aff;
+        border-radius: 4px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 8px 16px;
+        margin-right: 16px;
+      }
+      button:hover {
+        background-color: #0061b5;
+      }
+      button:active {
+        background-color: #004c8c;
+      }
+      /* Secondary styling for "Cancel" button */
+      button.secondary {
+        background-color: #ebeff2;
+        color: #1c1e1f;
+      }
+      button.secondary:hover {
+        background-color: #d3d8dc;
+      }
+      button.secondary:active {
+        background-color: #c0c5c8;
+      }
+      label {
+        font-size: 16px;
+        margin-right: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Plugin Paladins</h1>
+    </header>
+    <div class="checkbox-group">
+    <label for="design-principles">Include Design Principles</label>
+    <input type="checkbox" id="design-principles">
+    </div>
+    <div class="button-group">
+      <button id="cancel" class="secondary">Cancel</button>
+      <button id="create-pages">Create Pages</button>
+     
+    </div>
+    
+    <script>
+      document.getElementById('create-pages').onclick = () => {
+        const includeDesignPrinciples = document.getElementById('design-principles').checked;
+        parent.postMessage({ pluginMessage: { type: 'create-pages', includeDesignPrinciples } }, '*');
+      };
+      document.getElementById('cancel').onclick = () => {
+        parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
+      };
+    </script>
+  </body>
+</html>

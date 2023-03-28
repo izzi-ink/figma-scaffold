@@ -1,0 +1,12 @@
+{
+  "name": "test",
+  "id": "1222591332264213707",
+  "api": "1.0.0",
+  "main": "code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": [
+    "figma"
+  ],
+  "ui": "ui.html"
+}
